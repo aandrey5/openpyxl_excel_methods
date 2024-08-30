@@ -31,4 +31,25 @@ cell.is_date: Возвращает True, если значение ячейки 
 
 cell.internal_value: Возвращает внутреннее значение ячейки, как оно хранится в файле Excel.
 
-cell.offset(row, column): Возвращает ячейку, смещенную относительно текущей на указанное количество строк и столбцов.
+cell.offset(row, column): Возвращает ячейку, смещенную относительно текущей на указанное количество строк и столбцов.'''
+
+from openpyxl import Workbook
+
+wb = Workbook()
+ws = wb.active
+cell = ws['A1']
+
+# Установка значения
+cell.value = "Hello, World!"
+
+# Применение шрифта
+from openpyxl.styles import Font
+cell.font = Font(bold=True, italic=True)
+
+# Применение заливки
+from openpyxl.styles import PatternFill
+cell.fill = PatternFill("solid", fgColor="DDDDDD")
+
+# Получение координат ячейки
+print(cell.coordinate)  # 'A1'
+
